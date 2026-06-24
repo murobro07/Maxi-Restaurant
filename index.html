@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxi Restaurant - Dijital Menü</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b1320;
+            --surface-color: #152238;
+            --accent-color: #d4af37;
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 60px;
+        }
+
+        /* Header / Restoran Bilgileri */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 1)), url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        header p.tagline {
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .info-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            background: var(--surface-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .badge i {
+            color: var(--accent-color);
+            margin-right: 5px;
+        }
+
+        /* Kategori Navigasyonu (Hızlı Erişim) */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            padding: 15px 10px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            z-index: 100;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .category-nav::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .nav-btn {
+            background: var(--surface-color);
+            color: var(--text-main);
+            border: 1px solid transparent;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        /* Menü Listesi Alanı */
+        .menu-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .menu-section {
+            margin-bottom: 40px;
+            scroll-margin-top: 80px; /* Navigasyon linkine basınca doğru yerde durması için */
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 600px) {
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Menü Eleman Kartı */
+        .menu-item {
+            background: var(--surface-color);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--accent-color);
+            transition: transform 0.2s;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.02);
+        }
+
+        .item-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .item-details p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .item-price {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            padding-left: 15px;
+        }
+
+        /* İletişim ve Footer */
+        .footer-info {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--surface-color);
+            margin-top: 50px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+
+        .footer-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Başlık ve Tanıtım -->
+    <header>
+        <h1>MAXI RESTAURANT</h1>
+        <p class="tagline">Balık & Yeni Nesil Meyhane — Alanya</p>
+        <div class="info-badges">
+            <div class="badge"><i class="fa-solid fa-fish"></i> Taze Deniz Ürünleri</div>
+            <div class="badge"><i class="fa-solid fa-music"></i> Canlı Müzik & Fasıl</div>
+            <div class="badge"><i class="fa-solid fa-location-dot"></i> Dinek, Alanya</div>
+        </div>
+    </header>
+
+    <!-- Kategori Kaydırma Menüsü -->
+    <div class="category-nav">
+        <a href="#soğuk-mezeler" class="nav-btn active">Soğuk Mezeler</a>
+        <a href="#ara-sıcaklar" class="nav-btn">Ara Sıcaklar</a>
+        <a href="#deniz-ürünleri" class="nav-btn">Deniz Ürünleri / Balıklar</a>
+        <a href="#tatlılar" class="nav-btn">Tatlılar</a>
+        <a href="#içecekler" class="nav-btn">İçecekler</a>
+    </div>
+
+    <!-- Menü İçerikleri -->
+    <div class="menu-container">
+
+        <!-- Kategori: Soğuk Mezeler -->
+        <section id="soğuk-mezeler" class="menu-section">
+            <h2 class="section-title"><i class="fa-solid fa-leaf"></i> Soğuk Mezeler</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Kavun & Ezine Peyniri</h3>
+                        <p>Olgunlaşmış Edremit ezine peyniri ve tatlı Alanya kavunu.</p>
+                    </div>
+                    <div class="item-price">180 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Deniz Börülcesi</h3>
+                        <p>Sarımsaklı zeytinyağı ve taze limon sosu ile.</p>
+                    </div>
+                    <div class="item-price">140 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Girit Ezmesi</h3>
+                        <p>Üç çeşit peynir, fıstık, ceviz ve sızma zeytinyağı karışımı.</p>
+                    </div>
+                    <div class="item-price">150 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Köpoğlu</h3>
+                        <p>Süzme yoğurt yatağında közlenmiş patlıcan ve biber küpleri.</p>
+                    </div>
+                    <div class="item-price">140 TL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori: Ara Sıcaklar -->
+        <section id="ara-sıcaklar" class="menu-section">
+            <h2 class="section-title"><i class="fa-solid fa-fire"></i> Ara Sıcaklar</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Tereyağlı Karides Tava</h3>
+                        <p>Pul biber, sarımsak ve güveçte eritilmiş sıcak tereyağı eşliğinde.</p>
+                    </div>
+                    <div class="item-price">320 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Kalamar Tava</h3>
+                        <p>Altın sarısı çıtır kalamar halkaları, özel tarator sos ile.</p>
+                    </div>
+                    <div class="item-price">340 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Ahtapot Izgara</h3>
+                        <p>Zeytinyağı ve kekik ile marine edilmiş, kömür ateşinde ahtapot kolları.</p>
+                    </div>
+                    <div class="item-price">450 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Paçanga Böreği</h3>
+                        <p>Kayseri pastırması ve kaşar peynirli çıtır meyhane böreği.</p>
+                    </div>
+                    <div class="item-price">160 TL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori: Deniz Ürünleri -->
+        <section id="deniz-ürünleri" class="menu-section">
+            <h2 class="section-title"><i class="fa-solid fa-shrimp"></i> Deniz Ürünleri & Balıklar</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Izgara Levrek</h3>
+                        <p>Akdeniz yeşillikleri, roka, kırmızı soğan ve limon ile kömürde pişmiş.</p>
+                    </div>
+                    <div class="item-price">420 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Çipura Izgara</h3>
+                        <p>Taze baharatlarla marine edilmiş günlük yerli çipura.</p>
+                    </div>
+                    <div class="item-price">400 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Kalkan Tava (Porsiyon)</h3>
+                        <p>Mevsimine göre taze unlanmış çıtır kalkan balığı dilimleri.</p>
+                    </div>
+                    <div class="item-price">650 TL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori: Tatlılar -->
+        <section id="tatlılar" class="menu-section">
+            <h2 class="section-title"><i class="fa-solid fa-ice-cream"></i> Tatlılar</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Fırında Sıcak Tahin Helvası</h3>
+                        <p>Güveçte eritilmiş, limon suyu ile fırınlanmış sıcak helva.</p>
+                    </div>
+                    <div class="item-price">120 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Meyve Tabağı (Karışık)</h3>
+                        <p>Mevsimin en taze Alanya meyvelerinden oluşan buzlu sunum.</p>
+                    </div>
+                    <div class="item-price">180 TL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori: İçecekler -->
+        <section id="içecekler" class="menu-section">
+            <h2 class="section-title"><i class="fa-solid fa-wine-glass"></i> İçecekler</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Yeni Rakı (Tek / Duble)</h3>
+                        <p>Geleneksel aslan sütü.</p>
+                    </div>
+                    <div class="item-price">130 / 220 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Yerli Şaraplar (Kadeh)</h3>
+                        <p>Özenle seçilmiş Akdeniz ve Ege şarapları.</p>
+                    </div>
+                    <div class="item-price">180 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Bira 50cl</h3>
+                        <p>Efes Pilsen / Tuborg Gold alternatifleriyle.</p>
+                    </div>
+                    <div class="item-price">140 TL</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Şalgam Suyu / Meşrubatlar</h3>
+                        <p>Acılı-acısız seçenekleriyle soğuk içecekler.</p>
+                    </div>
+                    <div class="item-price">50 TL</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Alt İletişim Bilgileri -->
+    <div class="footer-info">
+        <p><i class="fa-solid fa-location-dot"></i> Dinek, Emirgan Blv No:3, 07400 Alanya/Antalya</p>
+        <p><i class="fa-solid fa-phone"></i> Rezervasyon: <a href="tel:02425130708">(0242) 513 07 08</a></p>
+        <p style="margin-top: 15px; font-size: 0.75rem; color: #666;">© 2026 Maxi Restaurant. Tüm Hakları Saklıdır.</p>
+    </div>
+
+    <!-- Kategoriler Arası Aktif Sınıf Değişimi İçin Basit JavaScript -->
+    <script>
+        const buttons = document.querySelectorAll('.nav-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

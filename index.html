@@ -3,120 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAXI RESTAURANT | SİBER MENÜ</title>
-    <!-- Google Fonts ve FontAwesome Ikonları -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;800&display=swap" rel="stylesheet">
+    <title>MAXI RESTAURANT | DIJITAL MENU</title>
+    <!-- Google Fonts ve İkon Kütüphanesi -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* SIFIRLAMA VE ARKA PLAN (Siber Izgara Efekti) */
+        /* ==========================================================================
+           YANARLI DÖNERLİ NEON SİSTEM (RGB TEMA V2)
+           ========================================================================== */
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
+
         body {
-            background-color: #03060a;
-            color: #00ffcc;
+            background-color: #040814;
+            color: #fff;
+            padding-bottom: 120px;
             overflow-x: hidden;
-            padding-bottom: 100px;
-            /* Arka planda siber lazer çizgileri */
+            /* Arka planda siber lazer ızgarası */
             background-image: 
-                linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(0, 255, 204, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 204, 0.02) 1px, transparent 1px);
+            background-size: 25px 25px;
         }
 
-        /* NEON DEĞİŞKENLERİ */
-        :root {
-            --cyber-turkuaz: #00ffcc;
-            --cyber-pembe: #ff0055;
-            --cyber-sari: #ffcc00;
-            --hud-bg: rgba(6, 12, 22, 0.85);
-        }
-
-        /* HEADER ANIMASYONU VE GLITCH EFEKTİ */
+        /* 1. ÜST HEADER ALANI VE SESTREN PARILTISI */
         header {
             text-align: center;
-            padding: 50px 20px;
-            border-bottom: 3px double var(--cyber-turkuaz);
-            position: relative;
-            background: linear-gradient(180deg, rgba(3,6,10,0.2), #03060a), url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1000&q=80');
+            padding: 55px 20px 40px 20px;
+            background: linear-gradient(180deg, rgba(4,8,20,0.3), #040814), url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1000&q=80');
             background-size: cover;
             background-position: center;
-            box-shadow: 0 0 30px rgba(0, 255, 204, 0.15);
-        }
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,255,204,0) 95%, rgba(0,255,204,0.15) 95%);
-            background-size: 100% 4px;
-            animation: scanline 4s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes scanline {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+            border-bottom: 2px solid #122240;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.1);
         }
 
         .logo-text {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.8rem;
             font-weight: 900;
+            letter-spacing: 3px;
             color: #fff;
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px var(--cyber-turkuaz), 0 0 20px var(--cyber-turkuaz);
-            animation: pulseText 2s infinite alternate;
-        }
-        @keyframes pulseText {
-            0% { text-shadow: 0 0 8px var(--cyber-turkuaz), 0 0 15px var(--cyber-turkuaz); }
-            100% { text-shadow: 0 0 15px var(--cyber-turkuaz), 0 0 30px var(--cyber-turkuaz), 0 0 10px var(--cyber-pembe); }
-        }
-        
-        header p {
-            font-size: 0.9rem;
-            color: #8fa0b5;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            text-transform: uppercase;
+            /* Altın ve Neon Cyan geçişli siber yazı efekti */
+            text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff0055;
+            animation: glitchPulse 2s infinite alternate;
         }
 
-        /* YAMUK KESKİN HUD ROZETLERİ */
+        @keyframes glitchPulse {
+            0% { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff0055; transform: scale(1); }
+            100% { text-shadow: 0 0 20px #00ffcc, 0 0 40px #ff0055, 0 0 10px #fff; transform: scale(1.02); }
+        }
+
+        header p {
+            font-size: 0.85rem;
+            color: #8fa1b8;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* PREMIUM BİLGİ ROZETLERİ */
         .info-badges {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
         .badge {
-            background: rgba(0, 255, 204, 0.07);
-            border: 1px solid var(--cyber-turkuaz);
-            padding: 8px 18px;
-            font-size: 0.8rem;
-            color: #fff;
+            background: rgba(18, 34, 64, 0.6);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            color: #e2e8f0;
             font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-            box-shadow: inset 0 0 10px rgba(0,255,204,0.1);
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         .badge i {
-            color: var(--cyber-turkuaz);
+            color: #00ffcc;
             margin-right: 6px;
+            text-shadow: 0 0 5px #00ffcc;
         }
 
-        /* BİLİM KURGU TARZI KATEGORİ SEÇİCİ */
+        /* 2. DİNAMİK RGB KATEGORİ NAVİGASYONU (YANARLI DÖNERLİ MENÜ) */
         .category-nav-container {
             position: sticky;
             top: 0;
-            background: rgba(3, 6, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
+            background: rgba(4, 8, 20, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 999;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(0,255,204,0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .category-nav {
             max-width: 900px;
@@ -128,212 +114,206 @@
             scrollbar-width: none;
         }
         .category-nav::-webkit-scrollbar { display: none; }
-        
+
         .nav-btn {
-            background: #08121e;
-            color: #617b94;
-            border: 1px solid #14283c;
-            padding: 12px 24px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            background: #0b132b;
+            color: #64748b;
+            border: 1px solid #1c2541;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-size: 0.85rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            white-space: nowrap;
             cursor: pointer;
-            transition: all 0.3s ease;
-            clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
-        }
-        .nav-btn:hover, .nav-btn.active {
-            color: #fff;
-            background: var(--cyber-turkuaz);
-            border-color: var(--cyber-turkuaz);
-            box-shadow: 0 0 15px var(--cyber-turkuaz);
-            color: #000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* KATEGORİ SPESİFİK RENK DEĞİŞİMLERİ */
-        .nav-btn[data-target="ara-sicaklar"]:hover, .nav-btn[data-target="ara-sicaklar"].active {
-            background: var(--cyber-pembe); border-color: var(--cyber-pembe); box-shadow: 0 0 15px var(--cyber-pembe); color: #fff;
+        /* İŞTE O YANARLI DÖNERLİ RGB EFEKTİ (AKTİF BUTONDA ÇALIŞIR) */
+        .nav-btn.active {
+            background: linear-gradient(90deg, #ff0055, #00ffcc, #ffcc00, #ff0055) !important;
+            background-size: 400% 400% !important;
+            animation: rgbWave 3s ease infinite !important;
+            color: #000 !important;
+            font-weight: 800 !important;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.5) !important;
+            border: none !important;
         }
 
-        /* MENÜ İÇERİK ALANI VE KESKİN KARTLAR */
+        @keyframes rgbWave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 3. MENÜ CONTAINER VE GRID YAPISI */
         .menu-container {
             max-width: 900px;
-            margin: 40px auto;
+            margin: 35px auto;
             padding: 0 15px;
         }
         .menu-section {
-            margin-bottom: 60px;
-            scroll-margin-top: 100px;
+            margin-bottom: 50px;
+            scroll-margin-top: 90px;
         }
         .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffcc00;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            border-left: 4px solid var(--cyber-turkuaz);
-            padding-left: 12px;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
         }
-        #ara-sicaklar .section-title { border-left-color: var(--cyber-pembe); color: var(--cyber-pembe); text-shadow: 0 0 10px rgba(255,0,85,0.3); }
-        #soğuk-mezeler .section-title { color: var(--cyber-turkuaz); text-shadow: 0 0 10px rgba(0,255,204,0.3); }
+        .section-title i {
+            color: #00ffcc;
+            text-shadow: 0 0 8px #00ffcc;
+        }
 
         .menu-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 16px;
         }
         @media(min-width: 768px) {
             .menu-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        /* YANARLI DÖNERLİ OYUN KARTLARI (HUD İTEMS) */
+        /* 4. LAZER PARILTILI YEMEK KARTLARI */
         .menu-item {
-            background: var(--hud-bg);
-            border: 1px solid #14283c;
+            background: #0b132b;
+            border: 1px solid #1c2541;
+            border-radius: 8px;
             padding: 20px;
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 140px;
-        }
-        /* Köşelerdeki HUD Süsleri */
-        .menu-item::before {
-            content: ''; position: absolute; top: -1px; left: -1px; width: 10px; height: 10px;
-            border-top: 2px solid var(--cyber-turkuaz); border-left: 2px solid var(--cyber-turkuaz);
-        }
-        .menu-item::after {
-            content: ''; position: absolute; bottom: -1px; right: -1px; width: 10px; height: 10px;
-            border-bottom: 2px solid var(--cyber-turkuaz); border-right: 2px solid var(--cyber-turkuaz);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
         }
 
-        #ara-sicaklar .menu-item::before { border-top-color: var(--cyber-pembe); border-left-color: var(--cyber-pembe); }
-        #ara-sicaklar .menu-item::after { border-bottom-color: var(--cyber-pembe); border-right-color: var(--cyber-pembe); }
-
+        /* Kartın üzerine gelince kenarlardan sızan neon aqua efekti */
         .menu-item:hover {
-            transform: translateY(-4px) scale(1.01);
-            background: #091627;
-            border-color: var(--cyber-turkuaz);
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-        }
-        #ara-sicaklar .menu-item:hover {
-            border-color: var(--cyber-pembe);
-            box-shadow: 0 0 20px rgba(255, 0, 53, 0.2);
+            transform: scale(1.03) translateY(-4px);
+            border-color: #00ffcc;
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.35), inset 0 0 10px rgba(0, 255, 204, 0.05);
+            background: #111a36;
         }
 
-        .item-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 12px;
+        .item-details {
+            flex: 1;
+            padding-right: 15px;
         }
-        .item-title {
-            color: #fff;
+        .item-details h3 {
             font-size: 1.15rem;
+            color: #fff;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            transition: color 0.3s;
         }
-        .item-desc {
-            color: #7e95ad;
+        .menu-item:hover .item-details h3 {
+            color: #00ffcc;
+        }
+        .item-details p {
+            color: #94a3b8;
             font-size: 0.85rem;
             line-height: 1.5;
         }
 
-        /* IŞILDAYAN LAZER FİYAT ETİKETİ */
+        /* LAZER IŞIKLI NEON FİYAT ETİKETİ */
         .item-price {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.1rem;
-            color: #000;
-            background: var(--cyber-turkuaz);
-            padding: 4px 12px;
-            box-shadow: 0 0 10px var(--cyber-turkuaz);
-            clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+            font-size: 1.15rem;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+            white-space: nowrap;
+            background: rgba(255, 204, 0, 0.05);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px dashed rgba(255, 204, 0, 0.3);
+            transition: all 0.3s;
         }
-        #ara-sicaklar .item-price {
-            background: var(--cyber-pembe);
-            color: #fff;
-            box-shadow: 0 0 10px var(--cyber-pembe);
+        .menu-item:hover .item-price {
+            color: #00ffcc;
+            text-shadow: 0 0 12px #00ffcc;
+            background: rgba(0, 255, 204, 0.05);
+            border-color: #00ffcc;
         }
 
-        .click-hint {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: var(--cyber-turkuaz);
-            margin-top: auto;
-        }
-        #ara-sicaklar .click-hint { color: var(--cyber-pembe); }
-
-        /* PULSE EFEKTLİ FLOATING GARSON BUTONU */
+        /* 5. NABIZ (PULSE) EFEKTLİ GARSON ÇAĞIR BUTONU */
         .waiter-btn {
             position: fixed;
-            bottom: 30px;
+            bottom: 25px;
             right: 20px;
-            background: #03060a;
-            color: var(--cyber-pembe);
-            border: 2px solid var(--cyber-pembe);
-            padding: 15px 25px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
+            background: #ff0055;
+            color: #fff;
+            border: none;
+            padding: 15px 24px;
+            border-radius: 50px;
+            font-weight: 800;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             cursor: pointer;
-            z-index: 99;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
-            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-            animation: hudyGlow 2s infinite;
-        }
-        @keyframes hudyGlow {
-            0% { box-shadow: 0 0 5px rgba(255, 0, 85, 0.4); }
-            50% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.8); border-color: #fff; }
-            100% { box-shadow: 0 0 5px rgba(255, 0, 85, 0.4); }
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 15px #ff0055;
+            animation: neonPulse 1.5s infinite alternate;
         }
 
-        /* MODAL POPUP SİBER PANEL */
+        @keyframes neonPulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px #ff0055, 0 0 15px #ff0055; }
+            100% { transform: scale(1.05); box-shadow: 0 0 25px #ff0055, 0 0 35px #00ffcc; }
+        }
+
+        /* 6. NEON DETAY MODALI */
         .modal-mask {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 4, 7, 0.95);
+            background: rgba(2, 4, 10, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
             opacity: 0;
             pointer-events: none;
             transition: all 0.3s ease;
             padding: 20px;
         }
-        .modal-mask.open { opacity: 1; pointer-events: auto; }
-        
+        .modal-mask.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
         .modal-panel {
-            background: #060c16;
-            border: 2px solid var(--cyber-turkuaz);
+            background: #0b132b;
+            border: 2px solid #00ffcc;
+            border-radius: 12px;
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             padding: 30px;
             position: relative;
-            box-shadow: 0 0 40px rgba(0, 255, 204, 0.25);
+            box-shadow: 0 0 35px rgba(0, 255, 204, 0.3);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-mask.open .modal-panel {
+            transform: translateY(0);
         }
         .modal-close {
             position: absolute;
             top: 15px; right: 15px;
-            background: none; border: 1px solid var(--cyber-turkuaz);
-            color: var(--cyber-turkuaz); width: 35px; height: 35px;
-            cursor: pointer; font-family: 'Orbitron', sans-serif;
+            background: none; border: none;
+            color: #64748b; font-size: 1.2rem;
+            cursor: pointer;
         }
-        .m-title { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; color: #fff; margin-bottom: 10px; }
-        .m-price { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: var(--cyber-sari); margin-bottom: 20px; font-weight: 900; }
-        .m-desc { color: #a3b8cc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
+        .modal-close:hover { color: #00ffcc; }
+        .m-title { font-size: 1.4rem; color: #fff; font-weight: 800; margin-bottom: 8px; }
+        .m-price { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #ffcc00; margin-bottom: 15px; font-weight: 900; }
+        .m-desc { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -350,38 +330,51 @@
         </div>
     </header>
 
-    <!-- KATEGORİ NAVİGASYON -->
+    <!-- RGB AKICI KATEGORİ NAVİGASYONU -->
     <div class="category-nav-container">
         <div class="category-nav">
-            <button class="nav-btn active" data-target="soğuk-mezeler">Soğuk Mezeler</button>
-            <button class="nav-btn" data-target="ara-sicaklar">Ara Sıcaklar</button>
-            <button class="nav-btn" data-target="deniz-urunleri">Deniz Ürünleri</button>
-            <button class="nav-btn" data-target="tatlilar">Tatlılar</button>
+            <button class="nav-btn active" onclick="scrollToSection('soguk-mezeler', this)">Soğuk Mezeler</button>
+            <button class="nav-btn" onclick="scrollToSection('ara-sicaklar', this)">Ara Sıcaklar</button>
+            <button class="nav-btn" onclick="scrollToSection('deniz-urunleri', this)">Deniz Ürünleri</button>
+            <button class="nav-btn" onclick="scrollToSection('tatlilar', this)">Tatlılar</button>
+            <button class="nav-btn" onclick="scrollToSection('icecekler', this)">İçecekler</button>
         </div>
     </div>
 
-    <!-- MENÜ ALANI -->
+    <!-- MENÜ İÇERİK ALANI -->
     <div class="menu-container">
         
         <!-- SOĞUK MEZELER -->
-        <section id="soğuk-mezeler" class="menu-section">
+        <section id="soguk-mezeler" class="menu-section">
             <h2 class="section-title"><i class="fa-solid fa-snowflake"></i> Soğuk Mezeler</h2>
             <div class="menu-grid">
                 <div class="menu-item" onclick="openModal('Kavun & Ezine Peyniri', '180 TL', 'Olgunlaşmış Edremit ezine peyniri ve tatlı Alanya kavunu ile servis edilir.')">
-                    <div class="item-main">
-                        <div class="item-title">Kavun & Ezine Peyniri</div>
-                        <div class="item-price">180 TL</div>
+                    <div class="item-details">
+                        <h3>Kavun & Ezine Peyniri</h3>
+                        <p>Olgunlaşmış Edremit ezine peyniri ve tatlı Alanya kavunu.</p>
                     </div>
-                    <p class="item-desc">Olgunlaşmış Edremit ezine peyniri ve tatlı Alanya kavunu.</p>
-                    <div class="click-hint">// HUD_DETAYI_GÖR</div>
+                    <div class="item-price">180 TL</div>
                 </div>
-                <div class="menu-item" onclick="openModal('Deniz Börülcesi', '140 TL', 'Sarımsaklı zeytinyağı ve taze limon sosu eşliğinde deniz börülcesi.')">
-                    <div class="item-main">
-                        <div class="item-title">Deniz Börülcesi</div>
-                        <div class="item-price">140 TL</div>
+                <div class="menu-item" onclick="openModal('Deniz Börülcesi', '140 TL', 'Sarımsaklı zeytinyağı ve taze limon sosu eşliğinde servis edilen taze deniz börülcesi.')">
+                    <div class="item-details">
+                        <h3>Deniz Börülcesi</h3>
+                        <p>Sarımsaklı zeytinyağı ve taze limon sosu ile.</p>
                     </div>
-                    <p class="item-desc">Sarımsaklı zeytinyağı ve taze limon sosu ile.</p>
-                    <div class="click-hint">// HUD_DETAYI_GÖR</div>
+                    <div class="item-price">140 TL</div>
+                </div>
+                <div class="menu-item" onclick="openModal('Girit Ezmesi', '150 TL', 'Üç çeşit özel peynir, fıstık, ceviz ve sızma zeytinyağı karışımı.')">
+                    <div class="item-details">
+                        <h3>Girit Ezmesi</h3>
+                        <p>Üç çeşit peynir, fıstık, ceviz ve sızma zeytinyağı karışımı.</p>
+                    </div>
+                    <div class="item-price">150 TL</div>
+                </div>
+                <div class="menu-item" onclick="openModal('Köpoğlu', '140 TL', 'Süzme yoğurt yatağında közlenmiş patlıcan ve biber küpleri.')">
+                    <div class="item-details">
+                        <h3>Köpoğlu</h3>
+                        <p>Süzme yoğurt yatağında közlenmiş patlıcan ve biber küpleri.</p>
+                    </div>
+                    <div class="item-price">140 TL</div>
                 </div>
             </div>
         </section>
@@ -390,43 +383,55 @@
         <section id="ara-sicaklar" class="menu-section">
             <h2 class="section-title"><i class="fa-solid fa-fire"></i> Ara Sıcaklar</h2>
             <div class="menu-grid">
-                <div class="menu-item" onclick="openModal('Tereyağlı Karides Tava', '320 TL', 'Pul biber, sarımsak ve güveçte eritilmiş sıcak tereyağı eşliğinde leziz karides tava.')">
-                    <div class="item-main">
-                        <div class="item-title">Tereyağlı Karides Tava</div>
-                        <div class="item-price">320 TL</div>
+                <div class="menu-item" onclick="openModal('Tereyağlı Karides Tava', '320 TL', 'Pul biber, sarımsak ve güveçte eritilmiş sıcak tereyağı eşliğinde güveçte karides.')">
+                    <div class="item-details">
+                        <h3>Tereyağlı Karides Tava</h3>
+                        <p>Pul biber, sarımsak ve güveçte eritilmiş sıcak tereyağı eşliğinde.</p>
                     </div>
-                    <p class="item-desc">Pul biber, sarımsak ve güveçte eritilmiş sıcak tereyağı eşliğinde.</p>
-                    <div class="click-hint">// HUD_DETAYI_GÖR</div>
+                    <div class="item-price">320 TL</div>
                 </div>
-                <div class="menu-item" onclick="openModal('Kalamar Tava', '340 TL', 'Altın sarısı çıtır kalamar halkaları, özel tarator sos ile birlikte sunulur.')">
-                    <div class="item-main">
-                        <div class="item-title">Kalamar Tava</div>
-                        <div class="item-price">340 TL</div>
+                <div class="menu-item" onclick="openModal('Kalamar Tava', '340 TL', 'Altın sarısı çıtır kalamar halkaları, yanında özel tarator sos ile.')">
+                    <div class="item-details">
+                        <h3>Kalamar Tava</h3>
+                        <p>Altın sarısı çıtır kalamar halkaları, özel tarator sos ile.</p>
                     </div>
-                    <p class="item-desc">Altın sarısı çıtır kalamar halkaları, özel tarator sos ile.</p>
-                    <div class="click-hint">// HUD_DETAYI_GÖR</div>
+                    <div class="item-price">340 TL</div>
+                </div>
+                <div class="menu-item" onclick="openModal('Ahtapot Izgara', '450 TL', 'Zeytinyağı ve kekik ile marine edilmiş, kömür ateşinde lokum gibi pişmiş ahtapot kolları.')">
+                    <div class="item-details">
+                        <h3>Ahtapot Izgara</h3>
+                        <p>Zeytinyağı ve kekik ile marine edilmiş, kömür ateşinde ahtapot kolları.</p>
+                    </div>
+                    <div class="item-price">450 TL</div>
+                </div>
+                <div class="menu-item" onclick="openModal('Paçanga Böreği', '160 TL', 'Kayseri pastırması ve bol kaşar peynirli çıtır meyhane böreği.')">
+                    <div class="item-details">
+                        <h3>Paçanga Böreği</h3>
+                        <p>Kayseri pastırması ve kaşar peynirli çıtır meyhane böreği.</p>
+                    </div>
+                    <div class="item-price">160 TL</div>
                 </div>
             </div>
         </section>
 
     </div>
 
-    <!-- GECE MODU GARSON BUTONU -->
-    <button class="waiter-btn" onclick="alert('Garson Çağrısı Gönderildi! // SIGNAL_SENT')">
-        <i class="fa-solid fa-bell"></i> GARSON ÇAĞIR
+    <!-- DİNAMİK GARSON ÇAĞIRMA BUTONU -->
+    <button class="waiter-btn" onclick="alert('Garson Çağrısı Başarıyla Gönderildi! // SIGNAL_OK')">
+        <i class="fa-solid fa-bell"></i> Garson Çağır
     </button>
 
-    <!-- SİBER DETAY MODAL PANELDEN BAŞKA BİR ŞEY DEĞİL -->
+    <!-- NEON MODAL POPUP -->
     <div id="detailModal" class="modal-mask" onclick="closeModal()">
         <div class="modal-panel" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal()">X</button>
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
             <div id="m-title" class="m-title">Yemek Adı</div>
             <div id="m-price" class="m-price">00 TL</div>
-            <p id="m-desc" class="m-desc">Detay açıklaması buraya gelecek kanka.</p>
+            <p id="m-desc" class="m-desc">Detaylar.</p>
         </div>
     </div>
 
-    <!-- FONKSİYONLAR -->
+    <!-- SCRIPT MOTORU -->
     <script>
         function openModal(title, price, desc) {
             document.getElementById('m-title').innerText = title;
@@ -438,15 +443,11 @@
             document.getElementById('detailModal').classList.remove('open');
         }
 
-        // Kategori butonları tıklandığında yumuşak kaydırma
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const targetId = this.getAttribute('data-target');
-                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+        function scrollToSection(id, element) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>

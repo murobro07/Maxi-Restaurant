@@ -1,827 +1,388 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxi Restaurant - Ultra Profesyonel Dijital Menü</title>
-    <!-- Google Fonts & FontAwesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+/* ==========================================================================
+   CYBERPUNK / GAMER HUD TEMA - YANARLI DÖNERLİ ÖZEL CSS
+   ========================================================================== */
+
+/* SIFIRLAMA VE ARKA PLAN (Sonsuz Karanlık ve Neon Parıltı) */
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    background-color: #030508;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: #030508;
+    color: #00ffcc; /* Siber Turkuaz */
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    padding-bottom: 120px;
+    background-image: 
+        radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0),
+        radial-gradient(rgba(0, 255, 204, 0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+:root {
+    --bg-color: #030508;
+    --surface-color: #090f1a;
+    --surface-light: #131f33;
+    --text-muted: #64748b;
+    --neon-gold: #ff007f; /* Parlak Pembe / Neon Gold Değişimi */
     
-    <style>
-        /* Kategori Renk Paletleri (CSS Değişkenleri) */
-        :root {
-            --bg-color: #05080e;
-            --surface-color: #0b1320;
-            --surface-light: #121e33;
-            --text-main: #ffffff;
-            --text-muted: #8fa0ba;
-            --success-color: #10b981;
-            
-            /* Kategori Temaları */
-            --meze-color: #52b788;
-            --meze-bg: rgba(82, 183, 136, 0.06);
-            --meze-border: rgba(82, 183, 136, 0.15);
-            
-            --arasicak-color: #f4a261;
-            --arasicak-bg: rgba(244, 162, 97, 0.06);
-            --arasicak-border: rgba(244, 162, 97, 0.15);
-            
-            --deniz-color: #4ea8de;
-            --deniz-bg: rgba(78, 168, 222, 0.06);
-            --deniz-border: rgba(78, 168, 222, 0.15);
-            
-            --tatli-color: #b5179e;
-            --tatli-bg: rgba(181, 23, 158, 0.06);
-            --tatli-border: rgba(181, 23, 158, 0.15);
-            
-            --icecek-color: #d4af37;
-            --icecek-bg: rgba(212, 175, 55, 0.06);
-            --icecek-border: rgba(212, 175, 55, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding-bottom: 100px;
-        }
-
-        /* Üst Premium Banner */
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(rgba(5, 8, 14, 0.88), rgba(5, 8, 14, 1)), url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1000&q=80');
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
-            color: #d4af37;
-            letter-spacing: 4px;
-            margin-bottom: 6px;
-            font-weight: 700;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
-        }
-
-        header p.tagline {
-            font-style: italic;
-            font-family: 'Playfair Display', serif;
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            margin-bottom: 25px;
-        }
-
-        .info-badges {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .badge {
-            background: var(--surface-color);
-            padding: 10px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #e2e8f0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .badge i {
-            color: #d4af37;
-            margin-right: 8px;
-        }
-
-        /* Akıllı Arama Çubuğu */
-        .search-container {
-            max-width: 500px;
-            margin: 30px auto 10px auto;
-            padding: 0 20px;
-        }
-
-        .search-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-wrapper i {
-            position: absolute;
-            left: 20px;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        .search-bar {
-            width: 100%;
-            background: var(--surface-color);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 14px 14px 14px 50px;
-            border-radius: 50px;
-            color: #fff;
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar:focus {
-            border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-        }
-
-        /* Sticky Kategori Navigasyonu */
-        .category-nav-container {
-            position: sticky;
-            top: 0;
-            background-color: rgba(5, 8, 14, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 990;
-            padding: 15px 0;
-        }
-
-        .category-nav {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 15px;
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none;
-        }
-
-        .category-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        .nav-btn {
-            background: var(--surface-color);
-            color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 22px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Navigasyon Butonlarının Kendi Renklerinde Aktifleşmesi */
-        .nav-btn[href="#soğuk-mezeler"].active { background: var(--meze-color); color: #000; font-weight: 600; box-shadow: 0 5px 15px rgba(82, 183, 136, 0.3); }
-        .nav-btn[href="#ara-sıcaklar"].active { background: var(--arasicak-color); color: #000; font-weight: 600; box-shadow: 0 5px 15px rgba(244, 162, 97, 0.3); }
-        .nav-btn[href="#deniz-ürünleri"].active { background: var(--deniz-color); color: #000; font-weight: 600; box-shadow: 0 5px 15px rgba(78, 168, 222, 0.3); }
-        .nav-btn[href="#tatlılar"].active { background: var(--tatli-color); color: #fff; font-weight: 600; box-shadow: 0 5px 15px rgba(181, 23, 158, 0.3); }
-        .nav-btn[href="#içecekler"].active { background: var(--icecek-color); color: #000; font-weight: 600; box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
-
-        /* Menü Kapsayıcı */
-        .menu-container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .menu-section {
-            margin-bottom: 55px;
-            scroll-margin-top: 100px;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .menu-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* -----------------------------------------------------
-           KATEGORİLERE ÖZEL TASARIM VE RENK GRUPLARI
-        ----------------------------------------------------- */
-        
-        /* Ortak Başlık Yapısı */
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.1rem;
-            margin-bottom: 25px;
-            padding-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-weight: 600;
-        }
-
-        /* Ortak Kart Yapısı */
-        .menu-item {
-            background: var(--surface-color);
-            border-radius: 18px;
-            padding: 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .item-details {
-            flex: 1;
-            padding-right: 15px;
-        }
-
-        .item-details h3 {
-            font-size: 1.25rem;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .item-details p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.45;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .view-details-hint {
-            font-size: 0.78rem;
-            margin-top: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: 500;
-        }
-
-        .item-price {
-            font-weight: 600;
-            font-size: 1.25rem;
-            white-space: nowrap;
-            padding: 8px 16px;
-            border-radius: 14px;
-            transition: all 0.3s ease;
-        }
-
-        /* 1. SOĞUK MEZELER (Yeşil Tema) */
-        #soğuk-mezeler .section-title { color: var(--meze-color); border-bottom: 2px solid var(--meze-border); }
-        #soğuk-mezeler .menu-item { background: var(--meze-bg); border-color: var(--meze-border); }
-        #soğuk-mezeler .menu-item:hover { transform: translateY(-4px); background: rgba(82, 183, 136, 0.12); border-color: var(--meze-color); box-shadow: 0 8px 25px rgba(82, 183, 136, 0.15); }
-        #soğuk-mezeler .item-price { color: var(--meze-color); background: rgba(82, 183, 136, 0.12); }
-        #soğuk-mezeler .view-details-hint { color: var(--meze-color); }
-
-        /* 2. ARA SICAKLAR (Turuncu/Bakır Tema) */
-        #ara-sıcaklar .section-title { color: var(--arasicak-color); border-bottom: 2px solid var(--arasicak-border); }
-        #ara-sıcaklar .menu-item { background: var(--arasicak-bg); border-color: var(--arasicak-border); }
-        #ara-sıcaklar .menu-item:hover { transform: translateY(-4px); background: rgba(244, 162, 97, 0.12); border-color: var(--arasicak-color); box-shadow: 0 8px 25px rgba(244, 162, 97, 0.15); }
-        #ara-sıcaklar .item-price { color: var(--arasicak-color); background: rgba(244, 162, 97, 0.12); }
-        #ara-sıcaklar .view-details-hint { color: var(--arasicak-color); }
-
-        /* 3. DENİZ ÜRÜNLERİ (Mavi Tema) */
-        #deniz-ürünleri .section-title { color: var(--deniz-color); border-bottom: 2px solid var(--deniz-border); }
-        #deniz-ürünleri .menu-item { background: var(--deniz-bg); border-color: var(--deniz-border); }
-        #deniz-ürünleri .menu-item:hover { transform: translateY(-4px); background: rgba(78, 168, 222, 0.12); border-color: var(--deniz-color); box-shadow: 0 8px 25px rgba(78, 168, 222, 0.15); }
-        #deniz-ürünleri .item-price { color: var(--deniz-color); background: rgba(78, 168, 222, 0.12); }
-        #deniz-ürünleri .view-details-hint { color: var(--deniz-color); }
-
-        /* 4. TATLILAR (Mor Tema) */
-        #tatlılar .section-title { color: var(--tatli-color); border-bottom: 2px solid var(--tatli-border); }
-        #tatlılar .menu-item { background: var(--tatli-bg); border-color: var(--tatli-border); }
-        #tatlılar .menu-item:hover { transform: translateY(-4px); background: rgba(181, 23, 158, 0.12); border-color: var(--tatli-color); box-shadow: 0 8px 25px rgba(181, 23, 158, 0.15); }
-        #tatlılar .item-price { color: var(--tatli-color); background: rgba(181, 23, 158, 0.12); }
-        #tatlılar .view-details-hint { color: var(--tatli-color); }
-
-        /* 5. İÇECEKLER (Altın Tema) */
-        #içecekler .section-title { color: var(--icecek-color); border-bottom: 2px solid var(--icecek-border); }
-        #içecekler .menu-item { background: var(--icecek-bg); border-color: var(--icecek-border); }
-        #içecekler .menu-item:hover { transform: translateY(-4px); background: rgba(212, 175, 55, 0.12); border-color: var(--icecek-color); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15); }
-        #içecekler .item-price { color: var(--icecek-color); background: rgba(212, 175, 55, 0.12); }
-        #içecekler .view-details-hint { color: var(--icecek-color); }
-
-        /* ----------------------------------------------------- */
-
-        /* Sabit Garson Butonu */
-        .waiter-trigger {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #d4af37;
-            color: #05080e;
-            border: none;
-            padding: 16px 26px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
-            cursor: pointer;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .waiter-trigger:hover {
-            background: #f3cf55;
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
-        }
-
-        /* Detay Modalı (Pop-up) */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(3, 5, 10, 0.85);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-        }
-
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-box {
-            background: var(--surface-color);
-            border-radius: 28px;
-            max-width: 520px;
-            width: 100%;
-            padding: 35px;
-            position: relative;
-            transform: translateY(40px);
-            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .modal-overlay.open .modal-box {
-            transform: translateY(0);
-        }
-
-        /* Dinamik Modal Kenar Rengi Ayarı */
-        .modal-overlay.theme-meze .modal-box { border-color: var(--meze-color); }
-        .modal-overlay.theme-arasicak .modal-box { border-color: var(--arasicak-color); }
-        .modal-overlay.theme-deniz .modal-box { border-color: var(--deniz-color); }
-        .modal-overlay.theme-tatli .modal-box { border-color: var(--tatli-color); }
-        .modal-overlay.theme-icecek .modal-box { border-color: var(--icecek-color); }
-
-        .modal-close {
-            position: absolute;
-            top: 22px;
-            right: 22px;
-            background: rgba(255,255,255,0.05);
-            border: none;
-            color: var(--text-main);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-
-        .modal-close:hover {
-            background: rgba(255,255,255,0.12);
-        }
-
-        .modal-title {
-            font-family: 'Playfair Display', serif;
-            color: #fff;
-            font-size: 1.9rem;
-            margin-bottom: 8px;
-            padding-right: 30px;
-            font-weight: 600;
-        }
-
-        .modal-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            display: inline-block;
-        }
-
-        .modal-overlay.theme-meze .modal-price { color: var(--meze-color); }
-        .modal-overlay.theme-arasicak .modal-price { color: var(--arasicak-color); }
-        .modal-overlay.theme-deniz .modal-price { color: var(--deniz-color); }
-        .modal-overlay.theme-tatli .modal-price { color: var(--tatli-color); }
-        .modal-overlay.theme-icecek .modal-price { color: var(--icecek-color); }
-
-        .modal-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 8px;
-            margin-top: 20px;
-            font-weight: 700;
-            color: var(--text-muted);
-        }
-
-        .modal-desc {
-            color: #edf2f7;
-            font-size: 1.02rem;
-            line-height: 1.6;
-        }
-
-        .modal-ingredients {
-            color: #cbd5e1;
-            font-size: 0.92rem;
-            line-height: 1.55;
-            background: var(--surface-light);
-            padding: 14px 18px;
-            border-radius: 14px;
-            border-left: 3px solid transparent;
-        }
-
-        .modal-overlay.theme-meze .modal-ingredients { border-left-color: var(--meze-color); }
-        .modal-overlay.theme-arasicak .modal-ingredients { border-left-color: var(--arasicak-color); }
-        .modal-overlay.theme-deniz .modal-ingredients { border-left-color: var(--deniz-color); }
-        .modal-overlay.theme-tatli .modal-ingredients { border-left-color: var(--tatli-color); }
-        .modal-overlay.theme-icecek .modal-ingredients { border-left-color: var(--icecek-color); }
-
-        .modal-meta {
-            display: flex;
-            gap: 25px;
-            margin-top: 25px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding-top: 20px;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .modal-meta i {
-            margin-right: 5px;
-        }
-
-        /* Akıllı Bildirim (Toast) */
-        .toast {
-            position: fixed;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-120px);
-            background: #0f172a;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-left: 5px solid var(--success-color);
-            padding: 18px 28px;
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
-            pointer-events: none;
-            width: max-content;
-            max-width: 90vw;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .toast i {
-            color: var(--success-color);
-            font-size: 1.4rem;
-        }
-
-        .toast-content h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 2px;
-        }
-
-        .toast-content p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        .footer-info {
-            text-align: center;
-            padding: 50px 20px;
-            background: var(--surface-color);
-            margin-top: 80px;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .footer-info p {
-            margin-bottom: 12px;
-            color: var(--text-muted);
-        }
-
-        .footer-info a {
-            color: #d4af37;
-            text-decoration: none;
-            font-weight: 600;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Akıllı Bildirim Kutusu -->
-    <div id="toastNotification" class="toast">
-        <i class="fa-solid fa-circle-check"></i>
-        <div class="toast-content">
-            <h4 id="toastTitle">Sistem Bildirimi</h4>
-            <p id="toastMessage">İşlem başarıyla gerçekleştirildi.</p>
-        </div>
-    </div>
-
-    <!-- Garson Çağır Butonu -->
-    <button class="waiter-trigger" onclick="callWaiterSystem()">
-        <i class="fa-solid fa-bell-concierge"></i> Garson Çağır
-    </button>
-
-    <!-- Üst Görsel ve Bilgiler -->
-    <header>
-        <h1>MAXI RESTAURANT</h1>
-        <p class="tagline">Balık & Yeni Nesil Meyhane — Alanya</p>
-        <div class="info-badges">
-            <div class="badge"><i class="fa-solid fa-fish"></i> Taze Deniz Ürünleri</div>
-            <div class="badge"><i class="fa-solid fa-music"></i> Canlı Müzik & Fasıl</div>
-            <div class="badge"><i class="fa-solid fa-location-dot"></i> Dinek, Alanya</div>
-        </div>
-        
-        <!-- Canlı Menü İçi Arama -->
-        <div class="search-container">
-            <div class="search-wrapper">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="menuSearch" class="search-bar" placeholder="Meze, balık veya tatlı ara..." oninput="filterMenu()">
-            </div>
-        </div>
-    </header>
-
-    <!-- Kayan Akıllı Kategori Seçimi (ScrollSpy Destekli) -->
-    <div class="category-nav-container">
-        <div class="category-nav" id="categoryNav">
-            <a href="#soğuk-mezeler" class="nav-btn active">Soğuk Mezeler</a>
-            <a href="#ara-sıcaklar" class="nav-btn">Ara Sıcaklar</a>
-            <a href="#deniz-ürünleri" class="nav-btn">Deniz Ürünleri</a>
-            <a href="#tatlılar" class="nav-btn">Tatlılar</a>
-            <a href="#içecekler" class="nav-btn">İçecekler</a>
-        </div>
-    </div>
-
-    <!-- Ana Menü Alanı -->
-    <div class="menu-container" id="menuContainer">
-
-        <!-- Kategori: Soğuk Mezeler -->
-        <section id="soğuk-mezeler" class="menu-section">
-            <h2 class="section-title"><i class="fa-solid fa-leaf"></i> Soğuk Mezeler</h2>
-            <div class="menu-grid">
-                <div class="menu-item" onclick="openDetails('Kavun & Ezine Peyniri', '180 TL', 'Tam kıvamında olgunlaşmış premium Ezine koyun peyniri dilimleri, yanında serin ve tatlı Alanya kavunu ile birlikte servis edilir.', 'Ezine Koyun Peyniri, Alanya Kavunu, Nane Yaprağı (Laktoz içerir)', 'Anında Servis', 'meze')">
-                    <div class="item-details">
-                        <h3>Kavun & Ezine Peyniri</h3>
-                        <p>Olgunlaşmış Edremit ezine peyniri ve tatlı Alanya kavunu.</p>
-                        <span class="view-details-hint"><i class="fa-solid fa-eye"></i> Detayları & İçeriği Gör</span>
-                    </div>
-                    <div class="item-price">180 TL</div>
-                </div>
-                <div class="menu-item" onclick="openDetails('Girit Ezmesi', '150 TL', 'Üç farklı yöresel peynirin harmanlanarak fıstık, dövülmüş ceviz içi, taze fesleğen ve sızma zeytinyağı ile yoğrulmasıyla hazırlanan yoğun lezzetli meze.', 'Ezine Peyniri, İzmir Tulumu, Ceviz İçi, Antep Fıstığı, Fesleğen, Zeytinyağı', '5 Dakika', 'meze')">
-                    <div class="item-details">
-                        <h3>Girit Ezmesi</h3>
-                        <p>Üç çeşit peynir, fıstık, ceviz ve sızma zeytinyağı karışımı.</p>
-                        <span class="view-details-hint"><i class="fa-solid fa-eye"></i> Detayları & İçeriği Gör</span>
-                    </div>
-                    <div class="item-price">150 TL</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategori: Ara Sıcaklar -->
-        <section id="ara-sıcaklar" class="menu-section">
-            <h2 class="section-title"><i class="fa-solid fa-fire"></i> Ara Sıcaklar</h2>
-            <div class="menu-grid">
-                <div class="menu-item" onclick="openDetails('Tereyağlı Karides Tava', '320 TL', 'Kızgın güveçte, bol köpüklü hakiki tereyağı içerisinde; taze sarımsak, acı pul biber ve özel baharat miksiyle sotelenmiş taze deniz karidesleri.', 'Deniz Karidesi, Sarımsak, Tereyağı, Pul Biber, Kekik (Kabuklu deniz ürünü içerir)', '12 Dakika', 'arasicak')">
-                    <div class="item-details">
-                        <h3>Tereyağlı Karides Tava</h3>
-                        <p>Pul biber, sarımsak ve güveçte eritilmiş sıcak tereyağı eşliğinde.</p>
-                        <span class="view-details-hint"><i class="fa-solid fa-eye"></i> Detayları & İçeriği Gör</span>
-                    </div>
-                    <div class="item-price">320 TL</div>
-                </div>
-                <div class="menu-item" onclick="openDetails('Kalamar Tava', '340 TL', 'Özel maden suyu marinasyonuyla yumuşatılmış, altın sarısı çıtır kaplamasıyla sıcak servis edilen kalamar halkaları. Yanında ev yapımı cevizli tarator sos ile.', 'Kalamar, Maden Suyu, Un, Özel Tarator Sos (Gluten içerir)', '10 Dakika', 'arasicak')">
-                    <div class="item-details">
-                        <h3>Kalamar Tava</h3>
-                        <p>Altın sarısı çıtır kalamar halkaları, özel tarator sos ile.</p>
-                        <span class="view-details-hint"><i class="fa-solid fa-eye"></i> Detayları & İçeriği Gör</span>
-                    </div>
-                    <div class="item-price">340 TL</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategori: Deniz Ürünleri -->
-        <section id="deniz-ürünleri" class="menu-section">
-            <h2 class="section-title"><i class="fa-solid fa-shrimp"></i> Deniz Ürünleri & Balıklar</h2>
-            <div class="menu-grid">
-                <div class="menu-item" onclick="openDetails('Izgara Levrek', '420 TL', 'Kömür ateşinde ağır ağır, kurumadan içi sulu kalacak şekilde pişirilmiş taze Akdeniz Levreği. Yanında taze körpe roka ve kırmızı soğan halkaları ile.', 'Taze Levrek Balığı, Zeytinyağı, Deniz Tuzu, Roka, Kırmızı Soğan', '20 Dakika', 'deniz')">
-                    <div class="item-details">
-                        <h3>Izgara Levrek</h3>
-                        <p>Akdeniz yeşillikleri, roka, kırmızı soğan ve limon ile kömürde pişmiş.</p>
-                        <span class="view-details-hint"><i class="fa-solid fa-eye"></i> Detayları & İçeriği Gör</span>
-                    </div>
-                    <div class="item-price">420 TL</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategori: Tatlılar -->
-        <section id="tatlılar" class="menu-section">
-            <h2 class="section-title"><i class="fa-solid fa-ice-cream"></i> Tatlılar</h2>
-            <div class="menu-grid">
-                <div class="menu-item" onclick="openDetails('Fırında Sıcak Tahin Helvası', '120 TL', 'Geleneksel fırınlanmış tahin helvası. Üzeri çıtır kabuk bağlamış, içi akışkan ve sıcak kıvamda, taze sıkılmış limon suyu damlaları ile dengelenmiş balık sonrası klasiği.', 'Sade Tahin Helvası, Süt, Çam Fıstığı, Limon Suyu', '15 Dakika', 'tatli')">
-                    <div class="item-details">
-                        <h3>Fırında Sıcak Tahin Helvası</h3>
-                        <p>Güveçte eritilmiş, limon suyu ile fırınlanmış sıcak helva.</p>
-                        <span class="view-details-hint"><i class="fa-solid fa-eye"></i> Detayları & İçeriği Gör</span>
-                    </div>
-                    <div class="item-price">120 TL</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategori: İçecekler -->
-        <section id="içecekler" class="menu-section">
-            <h2 class="section-title"><i class="fa-solid fa-wine-glass"></i> İçecekler</h2>
-            <div class="menu-grid">
-                <div class="menu-item" onclick="openDetails('Yeni Rakı Duble', '220 TL', 'Geleneksel bakır damıtım aslan sütü, çift buz ve isteğe göre soğuk su eşliğinde masanıza servis edilir.', 'Üzüm ve Anason Distilatı, Alkol Derecesi %45', 'Anında Servis', 'icecek')">
-                    <div class="item-details">
-                        <h3>Yeni Rakı (Duble)</h3>
-                        <p>Geleneksel soğuk servis aslan sütü.</p>
-                        <span class="view-details-hint"><i class="fa-solid fa-eye"></i> Detayları & İçeriği Gör</span>
-                    </div>
-                    <div class="item-price">220 TL</div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- Ürün Detay Pop-up Penceresi (Dinamik Temalı) -->
-    <div id="detailsModal" class="modal-overlay" onclick="closeDetails(event)">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeDetails(null)"><i class="fa-solid fa-xmark"></i></button>
-            <h3 id="mTitle" class="modal-title">Ürün Adı</h3>
-            <span id="mPrice" class="modal-price">00 TL</span>
-            
-            <div class="modal-label">Açıklama</div>
-            <p id="mDesc" class="modal-desc">Ürün açıklaması.</p>
-            
-            <div class="modal-label">İçindekiler & Alerjen Bilgisi</div>
-            <p id="mIng" class="modal-ingredients">Malzemeler listesi.</p>
-            
-            <div class="modal-meta">
-                <span><i class="fa-solid fa-clock"></i> Mutfak Süresi: <strong id="mTime">10 dk</strong></span>
-                <span><i class="fa-solid fa-certificate"></i> Premium Kalite</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Alt İletişim Bilgileri -->
-    <div class="footer-info">
-        <p><i class="fa-solid fa-location-dot"></i> Dinek, Emirgan Blv No:3, 07400 Alanya/Antalya</p>
-        <p><i class="fa-solid fa-phone"></i> Masa Rezervasyon: <a href="tel:02425130708">(0242) 513 07 08</a></p>
-        <p style="margin-top: 15px; font-size: 0.75rem; color: #4a5568;">© 2026 Maxi Restaurant. Tüm Hakları Saklıdır.</p>
-    </div>
-
-    <!-- JavaScript Akıllı Sistem Kodları -->
-    <script>
-        // 1. Canlı Arama ve Filtreleme Sistemi
-        function filterMenu() {
-            const query = document.getElementById('menuSearch').value.toLowerCase().trim();
-            const items = document.querySelectorAll('.menu-item');
-            const sections = document.querySelectorAll('.menu-section');
-
-            items.forEach(item => {
-                const title = item.querySelector('h3').innerText.toLowerCase();
-                const desc = item.querySelector('p').innerText.toLowerCase();
-                
-                if (title.includes(query) || desc.includes(query)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            // Eğer kategoride hiç görünür ürün kalmadıysa kategoriyi gizle
-            sections.forEach(section => {
-                const visibleItems = section.querySelectorAll('.menu-item[style="display: flex;"]');
-                const allItems = section.querySelectorAll('.menu-item');
-                
-                if (allItems.length > 0 && visibleItems.length === 0 && query !== '') {
-                    section.style.display = 'none';
-                } else {
-                    section.style.display = 'block';
-                }
-            });
-        }
-
-        // 2. Dinamik Temalı Detay Pop-up Açma
-        function openDetails(title, price, desc, ingredients, prepTime, themeName) {
-            document.getElementById('mTitle').innerText = title;
-            document.getElementById('mPrice').innerText = price;
-            document.getElementById('mDesc').innerText = desc;
-            document.getElementById('mIng').innerText = ingredients;
-            document.getElementById('mTime').innerText = prepTime;
-            
-            // Eski temaları temizle ve yenisini bas
-            const modal = document.getElementById('detailsModal');
-            modal.className = 'modal-overlay'; 
-            modal.classList.add('theme-' + themeName);
-            modal.classList.add('open');
-        }
-
-        function closeDetails(event) {
-            if(event == null || event.target === document.getElementById('detailsModal')) {
-                document.getElementById('detailsModal').classList.remove('open');
-            }
-        }
-
-        // 3. Profesyonel Garson Çağrı Sistemi
-        function callWaiterSystem() {
-            let tableNo = prompt("Hizmet alabilmeniz için lütfen masa numaranızı giriniz:");
-            
-            if (tableNo != null && tableNo.trim() !== "") {
-                showToast("🛎️ Çağrı Alındı", "Masa " + tableNo + " talebi mutfak paneline iletildi. Garsonumuz yönlendiriliyor.");
-            } else if (tableNo !== null) {
-                showToast("⚠️ Hatalı Giriş", "Lütfen geçerli bir masa numarası yazdığınızdan emin olun.");
-            }
-        }
-
-        // 4. Profesyonel Bildirim Pencereleri (Toast)
-        function showToast(title, message) {
-            const toast = document.getElementById('toastNotification');
-            document.getElementById('toastTitle').innerText = title;
-            document.getElementById('toastMessage').innerText = message;
-            
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4500);
-        }
-
-        // 5. Akıllı ScrollSpy Sistemi (Kullanıcı kaydırdıkça buton renklerinin değişmesi)
-        const sections = document.querySelectorAll('.menu-section');
-        const navLinks = document.querySelectorAll('.nav-btn');
-
-        window.addEventListener('scroll', () => {
-            let currentSectionId = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 120)) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
-            if(currentSectionId) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + currentSectionId) {
-                        link.classList.add('active');
-                        // Mobilde aktif olan kategoriyi otomatik merkezle
-                        link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+    /* Canlı Kategori Renkleri */
+    --meze: #00ffcc;       /* Cyber Turkuaz */
+    --arasicak: #ff3366;   /* Neon Pembe */
+    --deniz: #3399ff;      /* Lazer Mavi */
+    --tatli: #cc33ff;      /* Matrix Mor */
+    --icecek: #ffcc00;     /* Elektrik Sarı */
+}
+
+/* SİBER HEADER ANIMASYONU */
+header {
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+    background: linear-gradient(180px, rgba(3, 5, 8, 0.2), #030508), url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-bottom: 2px dashed rgba(0, 255, 204, 0.2);
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.1), transparent);
+    animation: scanline 6s linear infinite;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 10px var(--meze), 0 0 20px var(--meze), 0 0 40px var(--meze);
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+    animation: glitch 3s infinite;
+}
+
+/* BARKOD / HUD TARZI BİLGİ ROZETLERİ */
+.info-badges {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+.badge {
+    background: rgba(9, 15, 26, 0.8);
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid var(--meze);
+    font-size: 0.8rem;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%); /* Yamuk HUD Tasarımı */
+}
+.badge i {
+    color: var(--meze);
+    margin-right: 6px;
+}
+
+/* NEON ARAMA ÇUBUĞU */
+.search-container {
+    max-width: 500px;
+    margin: 30px auto 5px auto;
+    padding: 0 15px;
+}
+.search-wrapper i {
+    position: absolute;
+    left: 18px;
+    color: var(--meze);
+    text-shadow: 0 0 5px var(--meze);
+}
+.search-bar {
+    width: 100%;
+    background: var(--surface-color);
+    border: 2px solid var(--text-muted);
+    padding: 14px 14px 14px 45px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+.search-bar:focus {
+    border-color: var(--meze);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4), inset 0 0 5px rgba(0, 255, 204, 0.2);
+}
+
+/* KAYAN NEON KATEGORİ NAVİGASYONU */
+.category-nav-container {
+    position: sticky;
+    top: 0;
+    background-color: rgba(3, 5, 8, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+    z-index: 990;
+    padding: 15px 0;
+}
+.category-nav {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.nav-btn {
+    background: #0f1a2e;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 22px;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+
+/* AKTİF KATEGORİLERDE NEON PATLAMASI */
+.nav-btn.active[href="#soğuk-mezeler"] { background: var(--meze); color: #000; box-shadow: 0 0 20px var(--meze); }
+.nav-btn.active[href="#ara-sıcaklar"] { background: var(--arasicak); color: #fff; box-shadow: 0 0 20px var(--arasicak); }
+.nav-btn.active[href="#deniz-ürünleri"] { background: var(--deniz); color: #fff; box-shadow: 0 0 20px var(--deniz); }
+.nav-btn.active[href="#tatlılar"] { background: var(--tatli); color: #fff; box-shadow: 0 0 20px var(--tatli); }
+.nav-btn.active[href="#içecekler"] { background: var(--icecek); color: #000; box-shadow: 0 0 20px var(--icecek); }
+
+/* MENÜ GRID SİSTEMİ VE YANARLI DÖNERLİ KARTLAR */
+.menu-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+.menu-section {
+    margin-bottom: 50px;
+    scroll-margin-top: 90px;
+}
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ULTRA SİBER YEMEK KARTLARI */
+.menu-item {
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--text-muted);
+    border-radius: 0px; /* Keskin köşeler */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.menu-item:hover {
+    transform: scale(1.02) translateX(5px);
+    background: #0d1726;
+}
+
+.item-details h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.item-details p {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+.view-hint {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    display: block;
+    font-weight: 700;
+}
+
+/* YANARLI FİYAT ETİKETLERİ */
+.item-price {
+    font-weight: 800;
+    font-size: 1.2rem;
+    padding: 8px 16px;
+    border-radius: 0px;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+}
+
+/* KATEGORİ BAZLI NEON RENKLENDİRMELERİ */
+#soğuk-mezeler .section-title { color: var(--meze); text-shadow: 0 0 10px rgba(0, 255, 204, 0.3); }
+#soğuk-mezeler .menu-item:hover { border-color: var(--meze); box-shadow: 0 0 15px rgba(0, 255, 204, 0.2); }
+#soğuk-mezeler .menu-item { border-left-color: var(--meze); }
+#soğuk-mezeler .item-price { color: #000; background: var(--meze); box-shadow: 0 0 10px var(--meze); }
+#soğuk-mezeler .view-hint { color: var(--meze); }
+
+#ara-sıcaklar .section-title { color: var(--arasicak); text-shadow: 0 0 10px rgba(255, 51, 102, 0.3); }
+#ara-sıcaklar .menu-item:hover { border-color: var(--arasicak); box-shadow: 0 0 15px rgba(255, 51, 102, 0.2); }
+#ara-sıcaklar .menu-item { border-left-color: var(--arasicak); }
+#ara-sıcaklar .item-price { color: #fff; background: var(--arasicak); box-shadow: 0 0 10px var(--arasicak); }
+#ara-sıcaklar .view-hint { color: var(--arasicak); }
+
+#deniz-ürünleri .section-title { color: var(--deniz); text-shadow: 0 0 10px rgba(51, 153, 255, 0.3); }
+#deniz-ürünleri .menu-item:hover { border-color: var(--deniz); box-shadow: 0 0 15px rgba(51, 153, 255, 0.2); }
+#deniz-ürünleri .menu-item { border-left-color: var(--deniz); }
+#deniz-ürünleri .item-price { color: #fff; background: var(--deniz); box-shadow: 0 0 10px var(--deniz); }
+#deniz-ürünleri .view-hint { color: var(--deniz); }
+
+#tatlılar .section-title { color: var(--tatli); text-shadow: 0 0 10px rgba(204, 51, 255, 0.3); }
+#tatlılar .menu-item:hover { border-color: var(--tatli); box-shadow: 0 0 15px rgba(204, 51, 255, 0.2); }
+#tatlılar .menu-item { border-left-color: var(--tatli); }
+#tatlılar .item-price { color: #fff; background: var(--tatli); box-shadow: 0 0 10px var(--tatli); }
+#tatlılar .view-hint { color: var(--tatli); }
+
+#içecekler .section-title { color: var(--icecek); text-shadow: 0 0 10px rgba(255, 204, 0, 0.3); }
+#içecekler .menu-item:hover { border-color: var(--icecek); box-shadow: 0 0 15px rgba(255, 204, 0, 0.2); }
+#içecekler .menu-item { border-left-color: var(--icecek); }
+#içecekler .item-price { color: #000; background: var(--icecek); box-shadow: 0 0 10px var(--icecek); }
+#içecekler .view-hint { color: var(--icecek); }
+
+/* LAZER IŞIKLI FLOATING GARSON BUTONU */
+.waiter-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    background: #030508;
+    color: #ff3366;
+    border: 2px solid #ff3366;
+    padding: 16px 24px;
+    border-radius: 0px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 5px rgba(255, 51, 102, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(255, 51, 102, 0.8); border-color: #fff; }
+    100% { box-shadow: 0 0 5px rgba(255, 51, 102, 0.4); }
+}
+
+/* SİBER MODAL POPUP */
+.modal-mask {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(3, 5, 8, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 20px;
+}
+.modal-mask.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-content {
+    background: #090f1a;
+    border: 2px solid #00ffcc;
+    border-radius: 0px;
+    max-width: 480px;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+}
+.modal-close {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    width: 35px; height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-title {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.modal-price {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    display: inline-block;
+    color: #ffcc00;
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+}
+.modal-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 15px 0 6px 0;
+    font-weight: 800;
+    color: #64748b;
+}
+.modal-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #edf2f7;
+}
+.modal-ing {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    background: #131f33;
+    padding: 12px 16px;
+    border-left: 3px solid #ff3366;
+    color: #cbd5e1;
+}
+
+/* SİBER FOOTER */
+footer {
+    text-align: center;
+    padding: 50px 20px;
+    background: #090f1a;
+    margin-top: 60px;
+    font-size: 0.85rem;
+    border-top: 2px dashed rgba(0, 255, 204, 0.2);
+    color: #64748b;
+}
+footer a { color: #00ffcc; text-decoration: none; font-weight: 700; text-shadow: 0 0 5px var(--meze); }
